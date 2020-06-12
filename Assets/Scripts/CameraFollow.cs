@@ -11,6 +11,10 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity;
     private float timeCount = 0.0f;
 
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void FixedUpdate()
     {
@@ -18,7 +22,6 @@ public class CameraFollow : MonoBehaviour
         //transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, Time.time * rotationSpeed); //rotSpeed = 10
         transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSpeed);
         timeCount = timeCount + Time.deltaTime;
-
     }
 
     // Update is called once per frame
